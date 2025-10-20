@@ -1,0 +1,19 @@
+name: cml_agmt_proc_snpsht_daily
+version: '1.0'
+profile: databricks
+
+source-paths: ["models"]
+analysis-paths: ["analysis"]
+test-paths: ["tests"]
+data-paths: ["data"]
+macro-paths: ["macros"]
+
+model-paths:
+  - models/staging
+  - models/intermediate
+  - models
+
+models:
+  cml_agmt_proc_snpsht_daily:
+    materialized: table
+    full_refresh: true
