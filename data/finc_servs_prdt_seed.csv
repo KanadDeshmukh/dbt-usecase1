@@ -1,0 +1,10 @@
+PRDT_ID,PRDT_CD,PRDT_DESC
+PRD1,CD1,Product 1
+PRD2,CD2,Product 2
+PRD3,CD3,Product 3
+PRD4,CD4,Product 4
+PRD5,CD5,Product 5
+PRD6,,Product 6
+PRD7,CD7,
+PRD1,CD1,Product 1
+PRD8,INVALID,Product 8
