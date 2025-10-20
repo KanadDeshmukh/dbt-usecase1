@@ -1,0 +1,1 @@
+select * from {{ ref('int_cml_agmt_proc_snpsht_daily') }}

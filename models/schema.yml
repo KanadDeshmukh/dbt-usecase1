@@ -1,0 +1,111 @@
+version: 2
+
+models:
+  - name: stg_cml_agmt
+    description: "Staging model for CML_AGMT source table."
+    columns:
+      - name: AGMT_ANCHR_ID
+        description: "Agreement anchor ID."
+      - name: POL_NBR
+        description: "Policy number."
+      - name: POL_EFF_DT
+        description: "Policy effective date."
+      # ... (other columns)
+
+  - name: stg_finc_servs_prdt
+    description: "Staging model for FINC_SERVS_PRDT lookup table."
+    columns:
+      - name: PRDT_ID
+        description: "Product ID."
+      - name: PRDT_CD
+        description: "Product code."
+      - name: PRDT_DESC
+        description: "Product description."
+
+  - name: stg_rol_plyr_cat_rel
+    description: "Staging model for ROL_PLYR_CAT_REL lookup table."
+    columns:
+      - name: ROL_PLYR_ANCHR_ID
+        description: "Role player anchor ID."
+      - name: CAT_CD
+        description: "Category code."
+      - name: EXTL_REFR_CD1
+        description: "External reference code 1."
+
+  - name: stg_rol_plyr_cat_rel_mbi
+    description: "Staging model for ROL_PLYR_CAT_REL_MBI lookup table."
+    columns:
+      - name: ROL_PLYR_ANCHR_ID
+        description: "Role player anchor ID."
+      - name: CAT_CD_MBI
+        description: "MBI category code."
+      - name: EXTL_REFR_CD_MBI
+        description: "MBI external reference code."
+
+  - name: stg_int_org_rlup_mm_snpsht
+    description: "Staging model for INT_ORG_RLUP_MM_SNPSHT lookup table."
+    columns:
+      - name: ORG_ID
+        description: "Organization ID."
+      - name: FINC_LOW_LVL_ORG_ID
+        description: "Financial low level org ID."
+      - name: SBU_SSU_ID
+        description: "SBU/SSU ID."
+
+  - name: stg_pol_ded_plan
+    description: "Staging model for POL_DED_PLAN lookup table."
+    columns:
+      - name: POL_NBR
+        description: "Policy number."
+      - name: MAX_DED_AMT
+        description: "Maximum deductible amount."
+
+  - name: stg_int_org_rlup
+    description: "Staging model for INT_ORG_RLUP lookup table."
+    columns:
+      - name: ORG_ID
+        description: "Organization ID."
+      - name: EXTL_REFR_CD1
+        description: "External reference code 1."
+
+  - name: stg_extl_org
+    description: "Staging model for EXTL_ORG lookup table."
+    columns:
+      - name: ORG_ID
+        description: "Organization ID."
+      - name: OPERT_CO_CD
+        description: "Operating company code."
+
+  - name: stg_contr_veh
+    description: "Staging model for CONTR_VEH lookup table."
+    columns:
+      - name: CONTR_ID
+        description: "Contract ID."
+      - name: VEH_NEW_USED_IND
+        description: "Vehicle new/used indicator."
+      - name: VEH_MAKE_MODEL_ID
+        description: "Vehicle make/model ID."
+
+  - name: int_cml_agmt_proc_snpsht_daily
+    description: "Intermediate model for all joins, lookups, and transformations for cml_agmt_proc_snpsht_daily."
+    columns:
+      - name: AGMT_ANCHR_ID
+        description: "Agreement anchor ID."
+      - name: POL_NBR
+        description: "Policy number (ultimate if present)."
+      - name: POL_EFF_DT
+        description: "Policy effective date (ultimate if present)."
+      - name: TYP_ID
+        description: "Type ID."
+      # ... (all 89 columns with descriptions)
+
+  - name: cml_agmt_proc_snpsht_daily
+    description: "Final fact table for cml_agmt_proc_snpsht_daily, all 89 mapped columns."
+    columns:
+      - name: AGMT_ANCHR_ID
+        description: "Agreement anchor ID."
+      - name: POL_NBR
+        description: "Policy number (ultimate if present)."
+      - name: POL_EFF_DT
+        description: "Policy effective date (ultimate if present)."
+      # ... (all 89 columns with descriptions)

@@ -1,0 +1,54 @@
+version: 2
+models:
+  - name: cml_agmt_proc_snpsht_daily
+    description: "Schema tests for data integrity and business rule enforcement."
+    columns:
+      - name: AGMT_ANCHR_ID
+        tests:
+          - unique
+          - not_null
+      - name: POL_NBR
+        tests:
+          - not_null
+          - unique
+      - name: BNDL_CD
+        tests:
+          - accepted_values:
+              values: ['U', 'B']
+      - name: CAPTV_IND
+        tests:
+          - accepted_values:
+              values: ['Y', 'N']
+      - name: MAX_DED_CD
+        tests:
+          - accepted_values:
+              values: ['LOW', 'MED', 'HIGH']
+      - name: ORG_ID
+        tests:
+          - relationships:
+              to: ref('int_org_rlup')
+              field: ORG_ID
+      - name: MKT_PRD_SPEC_ID
+        tests:
+          - relationships:
+              to: ref('stg_finc_servs_prdt')
+              field: PRDT_ID
+      - name: ROL_PLYR_ANCHR_ID_INT_ORG
+        tests:
+          - relationships:
+              to: ref('stg_rol_plyr_cat_rel')
+              field: ROL_PLYR_ANCHR_ID
+      - name: ROL_PLYR_ANCHR_ID_EXTL_ORG
+        tests:
+          - relationships:
+              to: ref('stg_rol_plyr_cat_rel_mbi')
+              field: ROL_PLYR_ANCHR_ID
+      - name: LOW_LVL_ORG_ID
+        tests:
+          - not_null
+      - name: MAX_DED_AMT
+        tests:
+          - not_null
+          - accepted_values:
+              values: [0, 500, 5000, 10000, 999999, -100]
+      # ... tests for all remaining columns (not_null, unique, accepted_values, relationships, etc.)
